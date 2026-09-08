@@ -73,3 +73,17 @@ cd server && python -m pytest tests/   # 后端
 - [docs/design.md](docs/design.md) — 产品与架构设计
 - [server/README.md](server/README.md) — 后端 API 契约与模型配置
 - [IOS_INSTALL.md](IOS_INSTALL.md) — iOS 安装指南
+
+## 联系作者 / Contact
+
+扫码加微信交流 —— 功能建议、Bug 反馈、自部署问题都欢迎：
+
+<p align="center">
+  <img src="docs/wechat-qr.jpg" width="240" alt="WeChat QR code" />
+</p>
+
+Non-Chinese speakers are welcome to open an issue instead.
+
+## 许可证 / License
+
+[MIT](LICENSE) — 供学习与自用部署；欢迎 Fork 和 PR。
