@@ -1,0 +1,5 @@
+.env
+app_build_env.json
+__pycache__/
+*.pyc
+test_assets/

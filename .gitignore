@@ -1,0 +1,39 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.build-tools/
+clean/
+.flutter-plugins
+.flutter-plugins-dependencies
+# pubspec.lock 对应用项目建议入库：回退代码时依赖版本保持一致
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Platform build artifacts
+ios/Pods/
+ios/.symlinks/
+android/.gradle/
+android/local.properties
+android/key.properties
+*.jks
+
+# Misc
+*.log
+server/recognition_jobs.sqlite3
+.DS_Store
+Thumbs.db
+
+# Secrets & runtime data — never commit
+server/.env
+server/app_build_env.json
+server/job_data/
+server/test_assets/
+
+# Private dev notes — not part of the public release
+docs/codex-imported-context.md
+docs/codex-imported-transcripts/
+.claude/

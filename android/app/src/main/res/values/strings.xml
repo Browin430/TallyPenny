@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">智账</string>
+    <string name="voice_widget_name">智账语音记账</string>
+    <string name="voice_widget_description">胖丁唱歌风格的语音记账快捷组件</string>
+    <string name="voice_widget_subtitle">说一句话，自动识别金额与分类</string>
+    <string name="voice_widget_open">打开语音记账</string>
+    <string name="voice_widget_character">拿着麦克风唱歌的胖丁</string>
+    <string name="voice_widget_tip">进入后按住说话 · 松开自动结束\n支持一次说多笔账单</string>
+</resources>

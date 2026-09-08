@@ -1,0 +1,51 @@
+# Windows 上无法编译 iOS，用 GitHub 的 macOS runner 出未签名 IPA。
+# 产物用 Sideloadly + 免费 Apple ID 在 Windows 上重签后装机（7 天有效）。
+# 使用方法见根目录 IOS_INSTALL.md。
+name: build-ios-unsigned
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 与本机开发版本一致，避免 Dart SDK / Gradle 缓存差异
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.2
+          channel: stable
+          cache: true
+
+      # token 不入库（server/.gitignore 已忽略），从 GitHub Secret 生成。
+      # 缺了它 APK/IPA 能跑，但账单导入等请求会 401。
+      - name: Restore FM_API_TOKEN env file
+        env:
+          FM_API_TOKEN: ${{ secrets.FM_API_TOKEN }}
+        run: |
+          if [ -n "$FM_API_TOKEN" ]; then
+            printf '{"FM_API_TOKEN": "%s"}\n' "$FM_API_TOKEN" > server/app_build_env.json
+          else
+            echo "::warning::Secret FM_API_TOKEN 未配置，iOS 包将无法访问远程服务器"
+          fi
+
+      - run: flutter pub get
+
+      # --no-codesign：签名交给 Windows 端的 Sideloadly（免费 Apple ID）
+      - run: >
+          flutter build ios --release --no-codesign
+          --dart-define-from-file=server/app_build_env.json
+
+      - name: Package unsigned IPA
+        run: |
+          mkdir Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qr flowmoney-ios-unsigned.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flowmoney-ios-unsigned
+          path: flowmoney-ios-unsigned.ipa
+          retention-days: 14

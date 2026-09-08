@@ -1,0 +1,16 @@
+[Unit]
+Description=FlowMoney AI API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/flowmoney-server
+EnvironmentFile=/opt/flowmoney-server/.env
+ExecStart=/opt/flowmoney-server/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8765
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
