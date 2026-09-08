@@ -1,6 +1,6 @@
-# FlowMoney · AI 智能个人财务管理 App 设计文档
+# TallyPenny（智账）· AI 智能个人财务管理 App 设计文档
 
-> 暂定名 FlowMoney（代码名 `flowmoney`，产品名可随时更换，代码不强耦合：界面显示名为「智账」，2026-09-03 前为「智能记账」）。
+> 产品名 TallyPenny（界面显示名「智账」，2026-09-03 前为「智能记账」；历史工程代号 `flowmoney` 保留于包名与应用 ID，改动会导致既有数据不兼容）。
 > Flutter 一套代码，iOS + Android。数据全部本地存储，不上传。
 
 ---

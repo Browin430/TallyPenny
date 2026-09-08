@@ -1,4 +1,4 @@
-# FlowMoney（智账）
+# TallyPenny（智账）
 
 AI 智能个人财务管理 App。Flutter 一套代码覆盖 iOS / Android / Web 预览，配套 FastAPI 后端提供通义千问 AI 能力：文本 / 语音 / 截图账单解析、账单文件导入与财务顾问。
 
@@ -36,7 +36,7 @@ AI 智能个人财务管理 App。Flutter 一套代码覆盖 iOS / Android / Web
 
 ```bash
 flutter pub get
-flutter run -d edge      # Web 预览：内存仓库 + 演示数据，无需移动端工具链
+flutter run -d chrome    # Web 预览：内存仓库 + 演示数据，无需移动端工具链
 flutter run              # Android / iOS：sqflite 持久化
 ```
 
@@ -53,6 +53,53 @@ python main.py           # 默认 0.0.0.0:8765（或双击 start_server.bat）
 ```
 
 真机访问：手机与电脑同一 Wi-Fi，App 内填电脑局域网 IP。详见 [server/README.md](server/README.md)。
+
+## 用 Claude Code 等 AI 工具快速部署
+
+仓库自带 `CLAUDE.md`（架构与设计约定）与 `server/README.md`（后端契约），AI 编码工具读完后即可自主完成部署。
+推荐 [Claude Code](https://claude.com/claude-code)；Cursor、Codex CLI 等同理。克隆仓库，在项目根目录启动工具，
+把下面的提示词整段粘贴即可（英文用户用英文描述同样步骤即可，效果一致）。
+
+### ① 电脑上全栈跑起来（约 10 分钟）
+
+```text
+我要在本地跑通 TallyPenny（智账）。请先阅读 README.md、CLAUDE.md 和 server/README.md，然后：
+1. flutter doctor 检查环境，缺 Flutter 就帮我安装并配好 PATH；
+2. flutter pub get 安装前端依赖；
+3. 复制 server/.env.example 为 server/.env；我会提供 DASHSCOPE_API_KEY（阿里云百炼），其余保持默认；
+4. 安装后端 Python 依赖并启动服务，用 /health 验证通过；
+5. flutter run -d chrome 启动 App，在「我的 → AI 服务设置」填 http://127.0.0.1:8765，
+   然后录一句「昨天午饭花了 30 块」验证语音记账全链路。
+遇到环境问题自行排查修复，完成后汇报每一步结果与最终访问入口。
+```
+
+### ② 装到 Android 手机（约 15 分钟）
+
+```text
+帮我把 TallyPenny 构建成 Android APK 并装到手机：
+1. flutter doctor 检查环境，缺 Android SDK / 命令行工具 / 许可证就帮我配好；
+2. flutter pub get，然后 flutter build apk --release --target-platform android-arm64；
+3. 告诉我 APK 产物路径，并给出把它安装到手机的可行办法（USB 或局域网 HTTP）。
+注意：不要修改 applicationId 等技术标识。
+```
+
+iOS 安装见 [IOS_INSTALL.md](IOS_INSTALL.md)（GitHub Actions 出未签名 IPA + Sideloadly 重签，7 天有效）。
+
+### ③ 部署公网后端（可选：手机出门在外也能用 AI 能力）
+
+```text
+把本项目的 server/ 部署到这台 Linux 服务器，作为我私有的 TallyPenny AI 后端：
+1. 安装 Python venv 与依赖，代码放 /opt/tallypenny-server；
+2. 配置 .env：我提供 DASHSCOPE_API_KEY，另生成一个随机 FM_API_TOKEN 写入；
+3. 参考 server/tallypenny-ai.service 配置 systemd 服务并设为开机自启；
+4. 用我已有的域名配置 Nginx HTTPS 反代到 127.0.0.1:8765；
+5. 验证 https://<我的域名>/health 返回正常，手机 App 填该地址可用。
+```
+
+> **隐私模型**：账本数据永远只存在手机本地；仅在识别语音 / 截图 / 账单文件时，才把该条内容发送到你自己部署的后端。
+> 后端只做识别、不积累账本（识别任务的临时文件留在 `server/job_data/`，可定期清理）。
+> 不部署后端也能正常使用（本地 Mock + 手动记账）；AI 能力需要[阿里云百炼](https://bailian.console.aliyun.com/)的
+> DASHSCOPE_API_KEY（有免费额度）。
 
 ## 测试
 

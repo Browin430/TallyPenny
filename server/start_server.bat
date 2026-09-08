@@ -1,5 +1,5 @@
 @echo off
-rem FlowMoney AI server launcher (ASCII only: cmd parses batch by ANSI codepage)
+rem TallyPenny AI server launcher (ASCII only: cmd parses batch by ANSI codepage)
 cd /d "%~dp0"
 
 if not exist .env (

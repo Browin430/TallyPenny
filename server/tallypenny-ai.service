@@ -1,0 +1,16 @@
+[Unit]
+Description=TallyPenny AI API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/tallypenny-server
+EnvironmentFile=/opt/tallypenny-server/.env
+ExecStart=/opt/tallypenny-server/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8765
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

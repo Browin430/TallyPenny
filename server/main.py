@@ -1,4 +1,4 @@
-"""FlowMoney（智能记账）后端服务 —— FastAPI + 通义千问。
+"""TallyPenny（智能记账）后端服务 —— FastAPI + 通义千问。
 
 端点：
 - GET  /health               健康检查
@@ -54,7 +54,7 @@ from prompts import (
 )
 from statement_parser import StatementParseError, parse_statement_file, platform_label
 
-app = FastAPI(title="FlowMoney AI Server", version="0.1.0")
+app = FastAPI(title="TallyPenny AI Server", version="0.1.0")
 
 # Flutter Web 预览跨域访问（移动端不受 CORS 约束）。
 app.add_middleware(
@@ -83,7 +83,7 @@ STATEMENT_SUFFIXES = {".csv", ".xlsx"}
 SERVER_DIR = Path(__file__).resolve().parent
 JOB_DATA_DIR = SERVER_DIR / "job_data"
 JOB_DB_PATH = SERVER_DIR / "recognition_jobs.sqlite3"
-JOB_EXECUTOR = ThreadPoolExecutor(max_workers=2, thread_name_prefix="flowmoney-job")
+JOB_EXECUTOR = ThreadPoolExecutor(max_workers=2, thread_name_prefix="tallypenny-job")
 VISION_SEMAPHORE = threading.BoundedSemaphore(3)
 UPLOAD_CHUNK_BYTES = 1024 * 1024
 _SCHEDULED_JOB_IDS: set[str] = set()

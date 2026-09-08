@@ -15,7 +15,7 @@ Future<void> main() async {
   );
   final account = await auth.bootstrapLegacyAccount();
   final hasAccounts = (await auth.accounts()).isNotEmpty;
-  runApp(FlowMoneyBootstrap(
+  runApp(TallyPennyBootstrap(
     preferences: prefs,
     auth: auth,
     initialAccount: account,

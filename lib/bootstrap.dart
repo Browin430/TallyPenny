@@ -35,8 +35,8 @@ import 'services/refund_reconciliation_service.dart';
 import 'services/seed_data_service.dart';
 import 'state/app_providers.dart';
 
-class FlowMoneyBootstrap extends StatefulWidget {
-  const FlowMoneyBootstrap({
+class TallyPennyBootstrap extends StatefulWidget {
+  const TallyPennyBootstrap({
     super.key,
     required this.preferences,
     required this.auth,
@@ -50,10 +50,10 @@ class FlowMoneyBootstrap extends StatefulWidget {
   final bool hasAccounts;
 
   @override
-  State<FlowMoneyBootstrap> createState() => _FlowMoneyBootstrapState();
+  State<TallyPennyBootstrap> createState() => _TallyPennyBootstrapState();
 }
 
-class _FlowMoneyBootstrapState extends State<FlowMoneyBootstrap> {
+class _TallyPennyBootstrapState extends State<TallyPennyBootstrap> {
   LocalAccount? _account;
   Future<_UserWorkspace>? _workspace;
   _UserWorkspace? _openedWorkspace;

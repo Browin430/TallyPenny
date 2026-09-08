@@ -42,10 +42,10 @@ jobs:
         run: |
           mkdir Payload
           cp -R build/ios/iphoneos/Runner.app Payload/
-          zip -qr flowmoney-ios-unsigned.ipa Payload
+          zip -qr tallypenny-ios-unsigned.ipa Payload
 
       - uses: actions/upload-artifact@v4
         with:
-          name: flowmoney-ios-unsigned
-          path: flowmoney-ios-unsigned.ipa
+          name: tallypenny-ios-unsigned
+          path: tallypenny-ios-unsigned.ipa
           retention-days: 14

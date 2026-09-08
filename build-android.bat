@@ -2,7 +2,7 @@
 rem ============================================================
 rem  Android APK build script (ASCII path workaround)
 rem  Dart AOT compiler (gen_snapshot) cannot handle non-ASCII
-rem  project paths on Windows, so mirror the project to a FlowMoney-only
+rem  project paths on Windows, so mirror the project to a TallyPenny-only
 rem  directory. Do not share this cache with LinguaLoop or other Flutter apps.
 rem  and build there. The mirror keeps its own build\ and .dart_tool\
 rem  caches across runs (robocopy /MIR does not purge excluded dirs).
@@ -16,7 +16,7 @@ rem  got 401 from the server. This script is the only supported path.
 rem ============================================================
 setlocal
 set "PROJ=%~dp0"
-set "MIRROR=C:\fm_build_flowmoney"
+set "MIRROR=C:\fm_build_tallypenny"
 
 rem Flutter engine artifacts are hosted on Google by default, which is often
 rem unreachable on the current network. Keep explicit user settings, otherwise

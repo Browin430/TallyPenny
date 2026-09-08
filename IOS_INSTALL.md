@@ -8,7 +8,7 @@ iOS 的 IPA 只能在 macOS 上编译。本项目 Windows 上的做法：
 
 1. **推送代码到 GitHub 私有仓库**（无远程仓库时）：
    ```bash
-   git remote add origin https://github.com/<你的用户名>/flowmoney.git
+   git remote add origin https://github.com/<你的用户名>/tallypenny.git
    git push -u origin main
    ```
    仓库保持 Private 即可；`server/app_build_env.json` 已被 gitignore，不会上传。
@@ -27,7 +27,7 @@ iOS 的 IPA 只能在 macOS 上编译。本项目 Windows 上的做法：
 
 1. `git push` 最新代码。
 2. GitHub 仓库 → **Actions** 标签 → 左侧 `build-ios-unsigned` → **Run workflow**。
-3. 跑完后进入该次运行页面底部 **Artifacts**，下载 `flowmoney-ios-unsigned`，解压得到 `.ipa`。
+3. 跑完后进入该次运行页面底部 **Artifacts**，下载 `tallypenny-ios-unsigned`，解压得到 `.ipa`。
 
 ## 三、装机（每台手机约 5 分钟）
 

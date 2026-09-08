@@ -1,7 +1,9 @@
-# FlowMoney（工程代号 flowmoney）
+# TallyPenny（智账）
 
 AI 智能个人财务管理 App。Flutter 一套代码，目标平台 iOS / Android。
-产品名称未定稿 —— 代码中不出现 "FlowMoney" 字样于业务逻辑（仅 pubspec 包名与 README 允许）。
+产品名 TallyPenny（中文名「智账」，开源仓库 github.com/Browin430/TallyPenny）。历史工程代号 `flowmoney`
+仍保留在技术标识里（pubspec 包名、Android applicationId、iOS bundleId、数据库文件名 flowmoney.db）——
+改动会导致既有安装与数据不兼容，勿改；文档与展示层一律使用 TallyPenny / 智账。
 
 ## 历史上下文
 
